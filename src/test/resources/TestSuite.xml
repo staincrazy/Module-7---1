@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Module 6">
+
+	<test name="Email Operatot Test">
+		<classes>
+			<class name="org.epam.piatrenka.unit6.test.EmailOperatorTest" />
+		</classes>
+	</test>
+
+</suite>
