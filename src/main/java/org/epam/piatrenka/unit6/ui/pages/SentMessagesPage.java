@@ -1,6 +1,5 @@
 package org.epam.piatrenka.unit6.ui.pages;
 
-import org.epam.piatrenka.unit6.core.CustomException;
 import org.epam.piatrenka.unit6.test.EmailOperatorTest;
 import org.epam.piatrenka.unit6.utils.TextXPathGenerator;
 import org.openqa.selenium.By;
@@ -16,11 +15,6 @@ public class SentMessagesPage extends Page {
 	private WebElement properAddress;
 	private WebElement properSubject;
 
-	public SentMessagesPage(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(this.driver, this);
-	}
-
 	@FindBy(xpath = ".//*[text()='Reanold']")
 	private WebElement openMenuButton;
 
@@ -32,6 +26,11 @@ public class SentMessagesPage extends Page {
 
 	@FindBy(xpath = ".//Button[@title='Удалить']")
 	private WebElement deleteButton;
+
+	public SentMessagesPage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(this.driver, this);
+	}
 
 	public boolean verifyAddress() {
 		TextXPathGenerator tg = new TextXPathGenerator();
@@ -46,8 +45,6 @@ public class SentMessagesPage extends Page {
 		properSubject = driver.findElement(By.xpath(tg.getFullPath()));
 		return properSubject.isDisplayed();
 	}
-
-	
 
 	public SentMessagesPage exitMailBox() {
 		openMenuButton.click();

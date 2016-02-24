@@ -10,11 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DraftsPage extends Page {
 
-	public DraftsPage(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(this.driver, this);
-	}
-
 	private static String propAddress = EmailOperatorTest.address;
 	private static String propSubject = EmailOperatorTest.subject;
 	private WebElement properAddress;
@@ -29,14 +24,19 @@ public class DraftsPage extends Page {
 	@FindBy(xpath = ".//*[text()='Удалить']")
 	private WebElement deleteButton;
 
+	public DraftsPage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(this.driver, this);
+	}
+
 	public boolean messagesPresenceVerifier() {
-		logger.debug("debug message test");
+		logger.info("verifying message is disaplyed");
 		return epmtyDraftsVerifier.isDisplayed();
 
 	}
 
 	public boolean verifyAddress() {
-		logger.error("This mesage contains errorTest");
+		logger.info("Verifying address");
 		TextXPathGenerator tg = new TextXPathGenerator();
 		tg.setVariablePart(propAddress);
 		properAddress = driver.findElement(By.xpath(tg.getFullPath()));
@@ -44,7 +44,7 @@ public class DraftsPage extends Page {
 	}
 
 	public boolean verifySubject() {
-		logger.trace("Trace message");
+		logger.info("Verifying subject");
 		TextXPathGenerator tg = new TextXPathGenerator();
 		tg.setVariablePart(propSubject);
 		properSubject = driver.findElement(By.xpath(tg.getFullPath()));
@@ -52,7 +52,7 @@ public class DraftsPage extends Page {
 	}
 
 	public NewMailPage openSavedEmail() {
-		logger.info("Info Message");
+		logger.info("Verifying opening of new email page");
 		properAddress.click();
 		return PageFactory.initElements(driver, NewMailPage.class);
 	}

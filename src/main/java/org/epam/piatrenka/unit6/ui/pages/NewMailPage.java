@@ -10,11 +10,6 @@ public class NewMailPage extends Page {
 
 	protected String messageBodyFrame = "composeEditor_ifr";
 
-	public NewMailPage(WebDriver driver) {
-		super(driver);
-		PageFactory.initElements(this.driver, this);
-	}
-
 	@FindBy(xpath = ".//*[@class='uiAutocompletePlaceholder']")
 	private WebElement addressField;
 
@@ -35,6 +30,11 @@ public class NewMailPage extends Page {
 
 	@FindBy(xpath = ".//*[text()='Отправленные']")
 	private WebElement openSentMessagesButton;
+
+	public NewMailPage(WebDriver driver) {
+		super(driver);
+		PageFactory.initElements(this.driver, this);
+	}
 
 	public NewMailPage setAddress(String address) {
 		addressField.sendKeys(address);
